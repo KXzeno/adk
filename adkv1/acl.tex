@@ -1,11 +1,7 @@
-\documentclass[]{report}
-\usepackage{import}
+\documentclass[]{article}
+\usepackage[subpreambles=true]{standalone} 
+\usepackage{import} 
 \begin{document}
-\iffalse
-  \InputIfFileExists{/adl1/adr1.tex}%
-  {\input{./adl1/adr1.tex}}
-  {Failed}
-\fi
 \section{Hello World}
 \import{adl1/}{adr1}
 \end{document}
