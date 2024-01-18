@@ -6,27 +6,48 @@ Personal planning and notetaking formatting guide made in LaTeX
 ```markdown
 DKR
 └── ADK
-    ├── ACL.tex
-    ├── ADD.tex
     ├── assets
-    ├── ADL1
-    │   └── ADR1.tex
-    └── ADL2
-        └── ADR2.tex
+    ├── projects
+    ├── firstProject
+    │   ├── fp.adr1
+    │   ├── fp.adr2
+    │   └── fp.log
+    ├── secondProject
+    │   ├── sp.adr1
+    │   ├── sp.adr2
+    │   └── sp.log
+    ├── locallatexmf 
+    │   └── tex
+    │       └── latex
+    │           ├── mystuff
+    │           ├── mypackages.sty
+    │           └── templates
+    ├── ADA           
+    └── ADRe
 ```
-<h3 style="margin-bottom:0 margin-top:0">Terminology</h3>
+<h3 style="margin-bottom:0 margin-top:0">Parlance</h3>
 <h4 style="margin-bottom:0 margin-top:0">DKR</h4>
 <p style="margin-bottom:0">The Dynamic Knowledge Repository;</p>
 <h4 style="margin-bottom:0 margin-top:0">ADK</h4>
 <p style="margin-bottom:0">The Architectural Dynamic Knowledgebase;</p>
-<h4 style="margin-bottom:0 margin-top:0">ACL</h4>
-<p style="margin-bottom:0">Architectural Compiled Log;</p>
-<h4 style="margin-bottom:0 margin-top:0">ADD</h4>
-<p style="margin-bottom:0">Architectural Dynamic Documentation;</p>
 <h4 style="margin-bottom:0 margin-top:0">assets</h4>
 <p style="margin-bottom:0">Location of where static assets such as images are stored</p>
+<h4 style="margin-bottom:0 margin-top:0">locallatexmf</h4>
+<p style="margin-bottom:0">TDS compliance</p>
+<h4 style="margin-bottom:0 margin-top:0">Projects</h4>
+<p style="margin-bottom:0">Universal;</p>
+<h4 style="margin-bottom:0 margin-top:0"></h4>
+<p style="margin-bottom:0">Record syntax;</p>
 <h4 style="margin-bottom:0 margin-top:0">ADR</h4>
 <p style="margin-bottom:0">Architectural Decision Record;</p>
+<h4 style="margin-bottom:0 margin-top:0">Styles</h4>
+<p style="margin-bottom:0">Styles;</p>
+<h4 style="margin-bottom:0 margin-top:0">[AD]L</h4>
+<p style="margin-bottom:0">Architectural Decision Log;</p>
+<h4 style="margin-bottom:0 margin-top:0">ADA</h4>
+<p style="margin-bottom:0">Architectural Decision Archive;</p>
+<h4 style="margin-bottom:0 margin-top:0">ADRe</h4>
+<p style="margin-bottom:0">Architectural Decision Resources;</p>
 
 ## Installation
 
