@@ -18,12 +18,10 @@ DKR
     │   └── sp.log
     ├── locallatexmf 
     │   └── tex
-    │       └── latex
-    │           ├── mystuff
-    │           ├── mypackages.sty
-    │           └── templates
-    ├── ADA           
-    └── ADRe
+    ├── ADA └── latex
+    └── ADRe    ├── mystuff
+                ├── mypackages.sty
+                └── templates
 ```
 <h3 style="margin-bottom:0 margin-top:0">Parlance</h3>
 <h4 style="margin-bottom:0 margin-top:0">DKR</h4>
