@@ -1,0 +1,91 @@
+\documentclass[twocolumn, dvipsnames]{article}
+\usepackage{times}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\setlist[itemize]{label=$\dagger$}
+\usepackage{dashrule}
+\usepackage{titlesec}
+\usepackage{fontspec}
+\ExplSyntaxOn
+\cs_set:Nn \__fontspec_load_external_fontoptions:Nn
+{}
+\ExplSyntaxOff
+
+\usepackage [english]{babel}
+\usepackage [autostyle, english = american]{csquotes}
+\MakeOuterQuote{"}
+
+\usepackage{pifont}
+\def\dashfill{\cleaders\hbox to 2em{-}\hfill}
+\newlist{uniList}{itemize}{4}
+\setlist[uniList,1]{%
+  label = {},
+  noitemsep,
+  leftmargin = 0pt
+}
+\setlist[uniList]{%
+  label = {},
+  noitemsep,
+}
+\chead{title/chapter | COURSE_ABBREV\textendash{course_num}\textendash{sec_num}}
+\lhead{}
+\rhead{}
+\lfoot{}
+\cfoot{\thepage}
+\rfoot{}
+
+% For images
+% \begin{center}
+% \includegraphics[width=0.61\textwidth]{CC}
+% \end{center}
+
+\usepackage{graphicx}
+\usepackage{caption}
+
+\usepackage[labelformat=empty]{caption}
+
+\usepackage{soul}
+\usepackage{color}
+\definecolor{light}{rgb}{0.5, 0.5, 0.5}
+%
+\definecolor{light-gray}{gray}{0.89}  
+\definecolor{dark-gray}{gray}{0.19}
+\definecolor{kxPurple}{RGB}{148, 0, 211}
+\definecolor{kxP1}{HTML}{5f5f00}
+\definecolor{kxP2}{cmyk}{0.67, 0.53, 0, 0.45}
+\definecolor{kxP3}{rgb}{0.25, 0, 0.51}
+% Can do {\textcolor{}Text} or {\color{...}...} and {color!0-100!color} for mixtures
+% For more, see documentation in ~\Documentation\LaTeX\xcolors.pdf
+\def\light#1{{\color{light}#1}}
+\newcommand{\hlc}[2][yellow]{\unskip{\sethlcolor{#1}
+\hl{#2}}}
+\makeatletter
+\renewcommand\thesection{}
+\renewcommand\thesubsection{\@arabic\c@section.\@arabic\c@subsection}
+\renewcommand\thesubsubsection{\@arabic\c@section.\@arabic\c@subsection.\@arabic\c@subsubsection}
+\makeatother
+
+\definecolor{secClr}{RGB}{149, 37, 89}
+\definecolor{subSecClr}{RGB}{41, 89, 149}
+\newfontfamily\subsubsectionfont[Color=subSecClr]{Times New Roman}
+\titleformat*{\section}{\Large\bfseries\sffamily\color{secClr}}
+\titleformat*{\subsection}{\large\bfseries\sffamily\color{subSecClr}}
+\titleformat*{\subsubsection}{\itshape\subsubsectionfont}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+% \pagecolor{black}
+% \textcolor{green}
+
+% Sample start
+\iffalse
+\begin{document}
+\setlength{\parindent}{0pt}
+\texttt 
+\section{\fcolorbox{RoyalPurple}{white}{\large{\underline{ch_name}}}}
+% For long titles: \section{\fcolorbox{RoyalPurple}{white}{\large{\underline{Argonne National Laboratory}}}\{{\small{\hspace{0.23in}\textsl{And the Integral Fast Reactor}}}}
+\vspace{4.8pt}
+\end{document}
+\fi
