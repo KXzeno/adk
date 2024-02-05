@@ -1,0 +1,31 @@
+\usepackage{times}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\setlist[itemize]{label=\ding{228}}
+\usepackage{dashrule}
+\usepackage{titlesec}
+\usepackage{fontspec}
+\ExplSyntaxOn
+\cs_set:Nn \__fontspec_load_external_fontoptions:Nn
+{}
+\ExplSyntaxOff
+
+\usepackage [english]{babel}
+\usepackage [autostyle, english = american]{csquotes}
+\MakeOuterQuote{"}
+
+\usepackage{pifont}
+\def\dashfill{\cleaders\hbox to 2em{-}\hfill}
+\newlist{uniList}{itemize}{4}
+\setlist[uniList,1]{%
+  label = {},
+  noitemsep,
+  leftmargin = 0pt
+}
+\setlist[uniList]{%
+  label = {},
+  noitemsep,
+}
+
