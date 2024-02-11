@@ -23,6 +23,7 @@ DKR
                 ├── mypackages.sty
                 └── templates
 ```
+<!-- 
 <h3 style="margin-bottom:0 margin-top:0">Parlance</h3>
 <h4 style="margin-bottom:0 margin-top:0">DKR</h4>
 <p style="margin-bottom:0">The Dynamic Knowledge Repository;</p>
@@ -46,6 +47,12 @@ DKR
 <p style="margin-bottom:0">Architectural Decision Archive;</p>
 <h4 style="margin-bottom:0 margin-top:0">ADRe</h4>
 <p style="margin-bottom:0">Architectural Decision Resources;</p>
+-->
+## Quick Start :: LaTeX users
+1. Go to the projects dir
+2. Create a tex file
+3. Declare the preamble and template `\usepackage{preamble}`, `\usepackage{adkore}`
+4. Fill in fields given by template partial, see `sample.tex` in `...\projects\`
 
 ## Installation
 
