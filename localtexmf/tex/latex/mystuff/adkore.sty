@@ -1,0 +1,90 @@
+% adkore.sty
+
+\ProvidesPackage{adkore}
+
+\newcommand{\frontmatter}[4]{%
+    \noindent
+    \fbox{\parbox{\textwidth}{%
+            \textbf{\normalsize Architectural Decision Record}
+            \hfill 
+            \textsc{Type}: #1
+            \hfill
+            \textbf{Title}: #2
+            \hfill 
+            \textbf{Status}: #3
+            % O = Omitted
+            % ON = Ongoing
+            % D = Deprecated
+            % X = Executed
+
+            \vspace{0.17cm}
+            \textbf{Context}: #4
+    }}
+    \\
+}
+
+\newcommand{\strategy}[4]{%    
+    \vspace{0.3cm}
+    {\hfill}\large{\textbf{Core Decision}: #1}{\hfill}
+    \vspace{0.17cm}
+    \noindent
+    \begin{center}
+        \begin{tabular}{|p{0.3\textwidth}|p{0.3\textwidth}|p{0.3\textwidth}|}
+            \hline
+            \vspace{0.01cm}{\hfill}\textbf{Prospects}{\hfill}\vspace{0.1cm} & \vspace{0.01cm}{\hfill}\textbf{Decision Parameters}{\hfill}\vspace{0.1cm} & \vspace{0.01cm}{\hfill}\textbf{0TD Concerns}{\hfill}\vspace{0.1cm} \\
+            \hline
+            \vspace{0.1cm}
+            \begin{minipage}[t]{0.3\textwidth}
+                #2
+            \end{minipage}
+            \vspace{0.1cm} &
+            \vspace{0.1cm}
+            \begin{minipage}[t]{0.3\textwidth}
+                #3
+            \end{minipage}
+            \vspace{0.1cm} &
+            \vspace{0.1cm}
+            \begin{minipage}[t]{0.3\textwidth}
+                #4
+            \end{minipage}
+            \vspace{0.1cm}
+            \\
+            \hline
+        \end{tabular}
+    \end{center}
+    \vspace{1cm}
+} 
+
+\newcommand{\deploy}[2]{%
+    \begin{center}
+        \begin{tabular}{|p{0.45\textwidth}|p{0.45\textwidth}|}
+            \hline
+            \vspace{0.01cm}{\hfill}\textbf{Decision Process}{\hfill}\vspace{0.1cm} & \vspace{0.01cm}{\hfill}\textbf{Results and Conflicts}{\hfill}\vspace{0.1cm} \\
+            \hline
+            \vspace{0.1cm}
+            \begin{minipage}{0.45\textwidth}
+                #1
+            \end{minipage}
+            \vspace{0.1cm} &
+            \vspace{0.1cm}
+            \begin{minipage}{0.45\textwidth}
+                #2
+            \end{minipage}
+            \vspace{0.1cm}
+            \\
+            \hline
+        \end{tabular}
+    \end{center}
+
+    \vspace{1cm}
+}
+
+\newcommand{\report}[1]{%
+    % Optional
+    \noindent
+    \fbox{\parbox{\textwidth}{%
+            \vspace{0.1cm}{\hfill}\textbf{Experience Report}{\hfill}\vspace{0.1cm} \\
+            #1
+            \vspace{0.1cm}
+    }}
+}
