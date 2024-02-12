@@ -1,0 +1,77 @@
+\documentclass{article}
+
+\usepackage{preamble}
+\usepackage{adkore}
+\usepackage[english]{babel}
+\usepackage{blindtext}
+\usepackage{tabularray}
+\usepackage{lipsum}
+
+% [ADK // Optional]{Project version encounter and version ending}
+\version[Optional]{Initial -- Final}
+\blindmathtrue
+
+\begin{document}
+
+\frontmatter
+% Type
+{Project|Feature|Restructure} 
+% Title
+{Title}
+% Status
+{OM|ON|D|X|BL}
+% Context
+{\hfill OM $=$ Omitted \hfill ON $=$ Ongoing \hfill D $=$ Deprecated \hfill X $=$ Executed \hfill BL $=$ Backlogged}
+
+\strategy
+% Core Decision
+{Salient point of change}
+% Prospects
+{\blindenumerate[20]}
+% Decision Parameters
+{\blinditemize[10]}
+% Zero Technical Debt Concerns
+{
+%  \blindenumerate[3]
+  \blindtext
+%  \blindlist{itemize}[3]
+}
+
+\deploy
+% Decision Process
+{
+  \begin{enumerate}
+    \item First decision
+    \item Consideration
+    \item Handling
+    \item Second decision
+      \begin{itemize}[label=]
+        \item Consideration
+        \item Handling
+      \end{itemize}
+  \end{enumerate}
+  \begin{itemize}[label=\Delta]
+    \item First change in decision
+      \begin{itemize}[label=]
+        \item Consideration
+        \item Handling
+      \end{itemize}
+  \end{itemize}
+}
+% Results and Conflicts
+{
+  \begin{tblr}{
+      colspec = {|l|l|l|},
+      row{1-Z} = {font=\small}
+    }
+    Result & {R1 Consequence \\ R1 Consequence 2 \\ R1 Consequence 3} & {R1 Conflict \\ R1 Subconflict} \\
+    \hline
+    {Result 2 \\ Result 2-1} & {R2 Consequence \\ R2 Consequence 2 \\ R2-1 Consequence 1} & R2 Conflict \\
+  \end{tblr}
+}
+
+\report
+% Experience Report
+{\lipsum[1]}
+
+\end{document}
