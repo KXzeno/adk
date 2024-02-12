@@ -57,6 +57,14 @@ DKR
 ## Installation
 
 ## Tech Reqs
+[MiKTeX](https://www.bing.com/ck/a?!&&p=83d00a9dd73fd717JmltdHM9MTcwNzY5NjAwMCZpZ3VpZD0xZWNiZjMyYy1jMGNmLTY5YjktMGY1OS1lMDlkYzE1ZDY4MGQmaW5zaWQ9NTUxOA&ptn=3&ver=2&hsh=3&fclid=1ecbf32c-c0cf-69b9-0f59-e09dc15d680d&psq=miktex&u=a1aHR0cHM6Ly9taWt0ZXgub3JnL2Rvd25sb2Fk&ntb=1)
+[TeXstudio](https://github.com/texstudio-org/texstudio)
 
 ## Docs
-
+### Commands
++ `\version[Record #]{Version Scope}`
++ `\frontmatter{Type}{Status}{Context}`
++ `\strategy{Core Decision}{Prospects}{Decision Parameters}{0TD Concerns}`
++ `\deploy{Decision Process}{Results and Conflicts}`
++ `\report{Experience Report}`
+### Environments
