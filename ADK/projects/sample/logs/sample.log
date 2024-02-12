@@ -1,6 +1,6 @@
-This is LuaHBTeX, Version 1.17.1 (MiKTeX 23.12) (format=lualatex 2024.1.24)  12 FEB 2024 00:04
+This is LuaHBTeX, Version 1.17.1 (MiKTeX 23.12) (format=lualatex 2024.1.24)  12 FEB 2024 00:16
  restricted system commands enabled.
-**./sample.tex
+**sample.tex
 (./sample.tex
 LaTeX2e <2023-11-01>
 L3 programming layer <2024-01-04>
@@ -654,20 +654,20 @@ Package rerunfilecheck Info: File `sample.out' has not changed.
 )
 
 Here is how much of LuaTeX's memory you used:
- 12762 strings out of 476497
+ 12761 strings out of 476497
  125027,1977958 words of node,token memory allocated
  421 words of node memory still in use:
    3 hlist, 1 vlist, 1 rule, 2 glue, 3 kern, 1 glyph, 4 attribute, 51 glue_spec,
  4 attribute_list, 1 write nodes
-   avail lists: 2:468,3:225,4:27,5:153,6:105,7:3043,8:1,9:660,10:14,11:165
+   avail lists: 2:472,3:234,4:27,5:153,6:105,7:3178,8:1,9:663,10:14,11:174
  34604 multiletter control sequences out of 65536+600000
  35 fonts using 51901311 bytes
- 94i,12n,102p,265b,337s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 94i,12n,102p,263b,337s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <//?/c:/dev/adk/localtexmf/fonts/opentype/imported/iosevka/iosevka-bold.ttc><//?
 /c:/dev/adk/localtexmf/fonts/opentype/imported/iosevka/iosevka-regular.ttc><C:/U
 sers/Kontingent/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr
 10.pfb>
-Output written on sample.pdf (1 page, 40491 bytes).
+Output written on sample.pdf (1 page, 40780 bytes).
 
 PDF statistics: 29 PDF objects out of 1000 (max. 8388607)
  2 named destinations out of 1000 (max. 131072)
