@@ -5,9 +5,7 @@
 \newcommand{\frontmatter}[4]{%
     \noindent
     \fbox{\parbox{\textwidth}{%
-            \textbf{\normalsize Architectural Decision Record}
-            \hfill 
-            \textsc{Type}: #1
+            \textsc{\textbf{Type}}: #1
             \hfill
             \textbf{Title}: #2
             \hfill 
@@ -27,7 +25,7 @@
 \newcommand{\strategy}[4]{%    
 
     \vspace{0.17cm}
-    {\hfill}\large{\textbf{Core Decision}: #1}{\hfill}
+    {\hfill}\normalsize{\textbf{Core Decision}: #1}{\hfill}
 
     \noindent
     \begin{center}
@@ -85,7 +83,7 @@
     % Optional
     \noindent
     \fbox{\parbox{\textwidth}{%
-            \vspace{0.1cm}{\hfill}\textbf{Experience Report}{\hfill}\vspace{0.1cm} \\
+            \vspace{0.1cm}{\hfill}\textbf{Insight Report}{\hfill}\vspace{0.1cm} \\
             #1
             \vspace{0.1cm}
     }}
