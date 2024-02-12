@@ -14,8 +14,8 @@
 }
 
 \usepackage{enumitem}
-\setlist[itemize]{leftmargin=*}
-\setlist[enumerate]{leftmargin=*}
+\setlist[itemize]{leftmargin=*, noitemsep, topsep=0pt}
+\setlist[enumerate]{leftmargin=*, noitemsep, topsep=0pt}
 
 \usepackage[dvipsnames]{xcolor}
 
@@ -24,10 +24,38 @@
 
 
 \geometry{
-    a4paper,
-    total={170mm,257mm},
-    left=13mm,
-    top=13mm,
-    right=13mm,
+  a4paper,
+  total={170mm,257mm},
+  left=13mm,
+  top=17mm,
+  right=13mm,
+  bottom=23mm,
 }
 
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\newcommand{\version}[2][\textasciitilde]{%
+  \fancyhead[LE,LO]{%
+    \ifx#1\textasciitilde
+      % ifx compares two tokens --> #1 and \textasciitilde
+      #1\vspace*{-7pt} \\ \hrulefill \\  % return on !falsy
+    \else
+      % exists 
+      ADK\textendash#1\vspace*{-7pt} \\ \hrulefill \\ % return on !!falsy
+    \fi
+  }
+
+  \fancyhead[CE,CO]{~\\ \hrulefill \\~}
+  \fancyhead[RE,RO]{Architectural Decision Record\vspace*{-7pt} \\ \hrulefill \\ Version Scope $\colon$ #2}
+  \fancyfoot[RE,RO]{\thepage}
+}
+\cfoot{}
+\renewcommand{\headrulewidth}{0pt}
+
+\usepackage{fontspec}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\setmainfont{Iosevka-Regular}[
+    Extension = .ttc,
+    BoldFont = Iosevka-Bold.ttc,
+]
