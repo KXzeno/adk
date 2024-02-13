@@ -4,7 +4,6 @@
 \usepackage{adkore}
 \usepackage[english]{babel}
 \usepackage{blindtext}
-\usepackage{tabularray}
 \usepackage{lipsum}
 
 % [ADK // Optional]{Project version encounter and version ending}
@@ -60,8 +59,9 @@
 }
 % Results and Conflicts
 {
+  \raggedright
   \begin{tblr}{
-      colspec = {|l|l|l|},
+      colspec = {|X|X|X|},
       row{1-Z} = {font=\small}
     }
     Result & {R1 Consequence \\ R1 Consequence 2 \\ R1 Consequence 3} & {R1 Conflict \\ R1 Subconflict} \\
