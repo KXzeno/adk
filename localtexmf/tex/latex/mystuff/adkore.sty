@@ -29,54 +29,59 @@
 
     \noindent
     \begin{center}
-        \begin{tabular}{|p{0.3\textwidth}|p{0.3\textwidth}|p{0.3\textwidth}|}
+        \begin{tblr}{
+                colspec = {|p{0.3\textwidth}|p{0.3\textwidth}|p{0.3\textwidth}|},
+                row{1} = {halign = c}
+            }
             \hline
-            \vspace{0.01cm}{\hfill}\textbf{Prospects}{\hfill}\vspace{0.1cm} & \vspace{0.01cm}{\hfill}\textbf{Decision Parameters}{\hfill}\vspace{0.1cm} & \vspace{0.01cm}{\hfill}\textbf{0TD Concerns}{\hfill}\vspace{0.1cm} \\
+        \raisebox{-0.5ex}{{\hfill}\textbf{Prospects}{\hfill}\vspace{0.1cm}} & \raisebox{-0.5ex}{{\hfill}\textbf{Decision Parameters}{\hfill}\vspace{0.1cm}} & \raisebox{-0.5ex}{{\hfill}\textbf{0TD Concerns}{\hfill}\vspace{0.1cm}} \\
             \hline
-            \vspace{0.1cm}
             \begin{minipage}[t]{0.3\textwidth}
+                \vspace*{0.011cm}
                 #2
             \end{minipage}
             \vspace{0.1cm} &
-            \vspace{0.1cm}
             \begin{minipage}[t]{0.3\textwidth}
+                \vspace*{0.011cm}
                 #3
             \end{minipage}
             \vspace{0.1cm} &
-            \vspace{0.1cm}
             \begin{minipage}[t]{0.3\textwidth}
+                \vspace*{0.011cm}
                 #4
             \end{minipage}
             \vspace{0.1cm}
             \\
             \hline
-        \end{tabular}
+        \end{tblr}
     \end{center}
-    \vspace{0.3cm}
 } 
 
 \newcommand{\deploy}[2]{%
     \begin{center}
-        \begin{tabular}{|p{0.45\textwidth}|p{0.45\textwidth}|}
+        \begin{tblr}{
+                colspec = {|p{0.45\textwidth}|p{0.45\textwidth}|},
+                row{1} = {halign = c}
+        }
             \hline
-            \vspace{0.01cm}{\hfill}\textbf{Decision Process}{\hfill}\vspace{0.1cm} & \vspace{0.01cm}{\hfill}\textbf{Results and Conflicts}{\hfill}\vspace{0.1cm} \\
+        \raisebox{-0.5ex}{{\hfill}\textbf{Decision Process}{\hfill}\vspace{0.1cm}} &  \raisebox{-0.5ex}{\vspace{0.01cm}{\hfill}\textbf{Results and Conflicts}{\hfill}\vspace{0.1cm}} \\
             \hline
-            \vspace{0.1cm}
             \begin{minipage}{0.45\textwidth}
+                \vspace*{0.3cm}
                 #1
             \end{minipage}
             \vspace{0.1cm} &
-            \vspace{0.1cm}
             \begin{minipage}{0.45\textwidth}
+                \vspace*{0.3cm}
                 #2
             \end{minipage}
             \vspace{0.1cm}
             \\
             \hline
-        \end{tabular}
+        \end{tblr}
     \end{center}
 
-    \vspace{0.3cm}
+    \vspace{0.1cm}
 }
 
 \newcommand{\report}[1]{%
