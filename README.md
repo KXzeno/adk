@@ -58,13 +58,26 @@ DKR
 
 ## Tech Reqs
 [MiKTeX](https://www.bing.com/ck/a?!&&p=83d00a9dd73fd717JmltdHM9MTcwNzY5NjAwMCZpZ3VpZD0xZWNiZjMyYy1jMGNmLTY5YjktMGY1OS1lMDlkYzE1ZDY4MGQmaW5zaWQ9NTUxOA&ptn=3&ver=2&hsh=3&fclid=1ecbf32c-c0cf-69b9-0f59-e09dc15d680d&psq=miktex&u=a1aHR0cHM6Ly9taWt0ZXgub3JnL2Rvd25sb2Fk&ntb=1)
+
 [TeXstudio](https://github.com/texstudio-org/texstudio)
 
 ## Docs
 ### Commands
 + `\version[Record #]{Version Scope}`
-+ `\frontmatter{Type}{Status}{Context}`
+  - **Record #**: ADR Identifier
+  - **Version Scope**: Initial Version (Encountered) -- Final Version (Finalized)
++ `\Frontmatter{Type}{Status}{Context}`
+  - **Type**: Change represented
+  - **Status**: Current focus on change
+  - **Context**: Reason for change
 + `\strategy{Core Decision}{Prospects}{Decision Parameters}{0TD Concerns}`
+  - **Core Decision**: Succinct definition of change approach
+  - **Prospects**: Expectations for change
+  - **Decision Parameters**: Options for change
+  - **0TD Concerns**: Potential and ejected concerns for change 
 + `\deploy{Decision Process}{Results and Conflicts}`
-+ `\report{Experience Report}`
+  - **Decision Process**: Systemize parameters
+  - **Results and Conflicts**: Consequences of parameters
++ `\report{Insight Report}`
+  - **Insight Report**: Collection/Knowledge experience throughout decision execution
 ### Environments
