@@ -8,98 +8,18 @@
   urlcolor=cyan,
   pdfpagemode=FullScreen,
 }
-
-\geometry{
-  a4paper,
-  total={170mm,257mm},
-  left=13mm,
-  top=13mm,
-  right=13mm,
-}
+\usepackage{tabularray}
 
 \begin{document}
+\begin{tblr}{
+    colspec = {|p{0.45\textwidth}|p{0.45\textwidth}|},
+    hlines = {1pt,white},
+    row{2-Z} = {font=\Large}
+  }
+  Test & Test \\
+  Test & test
+\end{tblr}
 
-\noindent
-\fbox{\parbox{\textwidth}{
-    \textbf{\normalsize Architectural Decision Record}
-    \hfill 
-    \textsc{Type}: Project|Feature|Restructure
-    \hfill
-    \textbf{Title}: Title
-    \hfill 
-    \textbf{Status}: OM|ON|D|X
-    % O = Omitted
-    % ON = Ongoing
-    % D = Deprecated
-    % X = Executed
-
-    \vspace{0.17cm}
-    \textbf{Context}: Context
-}}
-\\
-
-\vspace{0.3cm}
-{\hfill}\large{\textbf{Core Decision}: Core Decision}{\hfill}
-\vspace{0.17cm}
-\noindent
-\iffalse
-
-\begin{center}
-  \begin{tabular}{|p{0.3\textwidth}|p{0.3\textwidth}|p{0.3\textwidth}|}
-    \hline
-    \vspace{0.01cm}{\hfill}\textbf{Prospects}{\hfill}\vspace{0.1cm} & \vspace{0.01cm}{\hfill}\textbf{Decision Parameters}{\hfill}\vspace{0.1cm} & \vspace{0.01cm}{\hfill}\textbf{0TD Concerns}{\hfill}\vspace{0.1cm} \\
-    \hline
-    \vspace{0.1cm}
-    \begin{minipage}[t]{0.3\textwidth}
-      % Content
-    \end{minipage}
-    \vspace{0.1cm} &
-    \vspace{0.1cm}
-    \begin{minipage}[t]{0.3\textwidth}
-      % Content
-    \end{minipage}
-    \vspace{0.1cm} &
-    \vspace{0.1cm}
-    \begin{minipage}[t]{0.3\textwidth}
-      % Content
-    \end{minipage}
-    \vspace{0.1cm}
-    \\
-    \hline
-  \end{tabular}
-\end{center}
-\vspace{1cm}
-
-\fi
-\begin{center}
-  \begin{tabular}{|p{0.45\textwidth}|p{0.45\textwidth}|}
-    \hline
-    \vspace{0.01cm}{\hfill}\textbf{Decision Process}{\hfill}\vspace{0.1cm} & \vspace{0.01cm}{\hfill}\textbf{Results and Conflicts}{\hfill}\vspace{0.1cm} \\
-    \hline
-    \vspace{0.1cm}
-    \begin{minipage}{0.45\textwidth}
-      % Content
-    \end{minipage}
-    \vspace{0.1cm} &
-    \vspace{0.1cm}
-    \begin{minipage}{0.45\textwidth}
-      % Content
-    \end{minipage}
-    \vspace{0.1cm}
-    \\
-    \hline
-  \end{tabular}
-\end{center}
-
-\vspace{1cm}
-
-% Optional
-\noindent
-\fbox{\parbox{\textwidth}{
-    \vspace{0.1cm}{\hfill}\textbf{Experience Report}{\hfill}\vspace{0.1cm} \\
-    % Content
-    \vspace{0.1cm}
-}}
 
 % \footnotemark[1] Test
 \footnotetext[1]{\url{https://github.com/KXzeno/adk}}
