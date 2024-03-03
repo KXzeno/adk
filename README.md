@@ -72,12 +72,12 @@ DKR
   - **Context**: Reason for change
 + `\strategy{Core Decision}{Prospects}{Decision Parameters}{0TD Concerns}`
   - **Core Decision**: Succinct definition of change approach
-  - **Prospects**: Expectations for change
-  - **Decision Parameters**: Options for change
-  - **0TD Concerns**: Potential and ejected concerns for change 
+  - **Prospects**: Expectations for change or what we expect to see
+  - **Decision Parameters**: Options for change or what we expect to use
+  - **0TD Concerns**: Potential and ejected concerns for change or what we expect to avoid
 + `\deploy{Decision Process}{Results and Conflicts}`
-  - **Decision Process**: Systemize parameters
-  - **Results and Conflicts**: Consequences of parameters
+  - **Decision Process**: Systemize parameters, choices made and accompanied thought process
+  - **Results and Conflicts**: Consequences of parameters, the solved and unsolved
 + `\report{Insight Report}`
   - **Insight Report**: Collection/Knowledge experience throughout decision execution
 ### Environments
