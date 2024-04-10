@@ -81,3 +81,6 @@ DKR
 + `\report{Insight Report}`
   - **Insight Report**: Collection/Knowledge experience throughout decision execution
 ### Environments
+
+##### Hitlist, as of 04-10-2024:
+- [ ] Add decision matrix as core project record
