@@ -60,18 +60,20 @@
 \newcommand{\deploy}[2]{%
     \begin{center}
         \begin{tblr}{
-                colspec = {|p{0.45\textwidth}|p{0.45\textwidth}|},
+                colspec = {|p{0.37\textwidth}|p{0.53\textwidth}|},
                 row{1} = {halign = c}
         }
             \hline
         \raisebox{-0.5ex}{{\hfill}\textbf{Decision Process}{\hfill}\vspace{0.1cm}} &  \raisebox{-0.5ex}{\vspace{0.01cm}{\hfill}\textbf{Results and Conflicts}{\hfill}\vspace{0.1cm}} \\
             \hline
-            \begin{minipage}{0.45\textwidth}
+            \begin{minipage}{0.37\textwidth}
                 \vspace*{0.3cm}
                 #1
             \end{minipage}
             \vspace{0.1cm} &
-            \begin{minipage}{0.45\textwidth}
+            \begin{minipage}{0.53\textwidth}
+                \setlength{\parskip}{0pt}
+                \setlength{\parindent}{0pt}
                 \vspace*{0.3cm}
                 #2
             \end{minipage}
