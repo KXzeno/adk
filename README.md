@@ -54,7 +54,11 @@ DKR
 3. Declare the preamble and template `\usepackage{preamble}`, `\usepackage{adkore}`
 4. Fill in fields given by template partial, see `sample.tex` in `...\projects\`
 
+## Mental Model
+![dynamic-knowledgebase](https://github.com/KXzeno/adk/blob/master/assets/adk-mental-model.png)
+
 ## Installation
+<em>Soon...</em>
 
 ## Tech Reqs
 [MiKTeX](https://www.bing.com/ck/a?!&&p=83d00a9dd73fd717JmltdHM9MTcwNzY5NjAwMCZpZ3VpZD0xZWNiZjMyYy1jMGNmLTY5YjktMGY1OS1lMDlkYzE1ZDY4MGQmaW5zaWQ9NTUxOA&ptn=3&ver=2&hsh=3&fclid=1ecbf32c-c0cf-69b9-0f59-e09dc15d680d&psq=miktex&u=a1aHR0cHM6Ly9taWt0ZXgub3JnL2Rvd25sb2Fk&ntb=1)
