@@ -1,8 +1,10 @@
-# Architectural Decision Knowledgebase
+<h2 align="center"> Architectural Decision Knowledgebase </h2>
+<p align="center"><em>Personal decision record constructor using <a href="https://www.latex-project.org/">LaTeX</a></em></p>
 
-Personal planning and notetaking formatting guide made in LaTeX
+---
 
-## Overview
+<!--
+# Overview
 ```markdown
 DKR
 └── ADK
@@ -23,7 +25,6 @@ DKR
 ├── mypackages.sty
 └── templates
 ```
-<!-- 
   <h3 style="margin-bottom:0 margin-top:0">Parlance</h3>
   <h4 style="margin-bottom:0 margin-top:0">DKR</h4>
   <p style="margin-bottom:0">The Dynamic Knowledge Repository;</p>
