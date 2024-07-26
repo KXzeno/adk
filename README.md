@@ -97,3 +97,4 @@ By default, every module besides the enclave module are clastic, modules that do
 - [ ] Add decision matrix as core project record
 - [ ] Create an intuitive flow|node-chart command
 - [ ] Design a UID generator for relational mapping of local enclave modules
+- [ ] Reduce operational overhead for consumers
