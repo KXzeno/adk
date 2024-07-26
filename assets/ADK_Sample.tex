@@ -1,0 +1,118 @@
+% See https://latexdraw.com/block-diagram-in-latex-step-by-step-tikz-tutorial/
+% See https://tikz.dev/library-shapes
+\documentclass{article}
+
+\usepackage[dvipsnames]{xcolor}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+\definecolor{courage}{HTML}{0F1018}
+\definecolor{undying}{HTML}{E8ECF4}
+\definecolor{gun}{HTML}{474F7A}
+\definecolor{act}{HTML}{9290C3}
+\definecolor{prim}{HTML}{F5F5F5}
+\pagecolor{courage}
+\color{BlueViolet}
+
+\begin{tikzpicture}
+
+  \tikzstyle{kite} = [
+  draw,
+  shape=kite,
+  double=courage,
+  minimum width=3.4cm,
+  minimum height=3.4cm
+  ]
+
+  \tikzstyle{block} = [
+  draw,
+  shape=block,
+  double=courage,
+  minimum width=2.3cm,
+  minimum height=2.3cm,
+  ]
+
+  \tikzstyle{circle} = [
+  draw,
+  shape=circle,
+  double=courage,
+  minimum width=3cm,
+  %minimum height=cm,
+  ]
+
+  \tikzstyle{dart} = [
+  draw,
+  shape=dart,
+  double=courage,
+  rotate=270,
+  minimum width=3cm,
+  %minimum height=cm,
+  ]
+
+  \node[kite, fill=gun] (domain) at (0,0){};
+
+  \node[align=center, anchor=90] at (domain.base){\scriptsize{\textsl{\textcolor{act}{Enclave Module}}}\\\textcolor{prim}{\normalsize\textnormal {Blog}}};
+
+  \node[circle,
+    fill=gun,
+    align=center,
+    below = 1.3cm of domain] (sphere){};
+
+  \node[align=center] at (sphere.center){\scriptsize{\textsl{\textcolor{act}{Context Module}}}\\\textcolor{prim}{\small{Front Page}}};
+
+  \node[dart,
+    fill=gun,
+    below right=2cm and 2.3cm of sphere] (pure){};
+
+  \node[align=center] at (pure.center){\scriptsize{\textsl{\textcolor{act}{Terminal Module}}}\\\textcolor{prim}{\small{Querying}}\\\textcolor{prim}{\small{Posts}}};
+
+  \node[block,
+    fill=gun,
+    below left=2cm and 0.1cm of sphere] (clastic){};
+
+  \node[align=center] at (clastic.center){\scriptsize{\textsl{\textcolor{act}{Context Module}}}\\\textcolor{prim}{\small{Navigation}}\\\textcolor{prim}{\small{Bar}}};
+
+  \node[dart,
+    fill=gun,
+    below=2.9cm of clastic, anchor=center] (otherClastic){};
+
+  \node[align=center] at (otherClastic.center){\scriptsize{\textsl{\textcolor{act}{Terminal Module}}}\\\textcolor{prim}{\small{Dynamic}}\\\textcolor{\small{Routing}}};
+
+  % VECTORS
+
+  \draw[-{Kite[scale=2]}, densely dash dot] (domain.south) -- (sphere.north)
+    node[near start, left]{\footnotesize{\textbf{\textcolor{undying}{Extends}}}};
+
+  \draw[-{Kite[scale=2]}] (pure.west) |- (sphere.east)
+    node[near start, right]{\footnotesize{\textbf{\textcolor{undying}{Fulfills}}}};
+
+  \draw[-{Kite[scale=2]}] (clastic.120) |- (sphere.west)
+    node[near start, left]{\footnotesize{\textbf{\textcolor{undying}{Fulfills}}}};
+
+  \draw[-{Kite[scale=2]}, densely dash dot] (sphere.south west) -| (clastic.north)
+    node[near end, right]{\footnotesize{\textbf{\textcolor{undying}{Extends}}}};
+
+  \draw[-{Kite[scale=2]}] (otherClastic.west) -- (clastic.south)
+    node[midway, left]{\footnotesize{\textbf{\textcolor{undying}{Fulfills}}}};
+
+  \draw[-{Kite[scale=2]}] (sphere.north east) -- (domain.south east)
+    node[midway, right]{\footnotesize{\textbf{\textcolor{undying}{Fulfills}}}};
+
+  \draw[-{Kite[scale=2]}] (otherClastic.south) -- ++ (-7, 0)
+    node[midway, below, align=center]{\footnotesize{\textsl{\textcolor{undying}{{Relationally maps to another module}}}}};
+
+  \draw[-{Kite[scale=2]}] (otherClastic.south) -- ++ (-7, 0)
+    node[midway, above, align=center]{\scriptsize{\textsl{\textcolor{undying}{{Optional}}}}};
+
+  \draw[-{Kite[scale=2]}] (clastic.west) -- ++ (-6.8, 0)
+    node[midway, below]{\footnotesize{\textsl{\textcolor{undying}{{Relationally maps to another module}}}}};
+
+  \draw[-{Kite[scale=2]}] (clastic.west) -- ++ (-6.8, 0)
+    node[midway, above]{\scriptsize{\textsl{\textcolor{undying}{{Optional}}}}};
+
+\end{tikzpicture}
+\end{document}
