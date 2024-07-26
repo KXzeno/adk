@@ -80,38 +80,38 @@
     fill=gun,
     below=2.9cm of clastic, anchor=center] (otherClastic){};
 
-  \node[align=center] at (otherClastic.center){\scriptsize{\textsl{\textcolor{act}{Terminal Module}}}\\\textcolor{prim}{\small{Dynamic}}\\\textcolor{\small{Routing}}};
+  \node[align=center] at (otherClastic.center){\scriptsize{\textsl{\textcolor{act}{Terminal Module}}}\\\textcolor{prim}{\small{Dynamic}}\\\textcolor{prim}{\small{Routing}}};
 
   % VECTORS
 
-  \draw[-{Kite[scale=2]}, densely dash dot] (domain.south) -- (sphere.north)
+  \draw[line width=2.071pt, -{Kite[scale=0.9]}, loosely dash dot dot] (domain.south) -- (sphere.north)
     node[near start, left]{\footnotesize{\textbf{\textcolor{undying}{Extends}}}};
 
-  \draw[-{Kite[scale=2]}] (pure.west) |- (sphere.east)
+  \draw[line width=2.071pt, -{Kite[scale=0.9]}] (pure.west) |- (sphere.east)
     node[near start, right]{\footnotesize{\textbf{\textcolor{undying}{Fulfills}}}};
 
-  \draw[-{Kite[scale=2]}] (clastic.120) |- (sphere.west)
+  \draw[line width=2.071pt, -{Kite[scale=0.9]}] (clastic.120) |- (sphere.west)
     node[near start, left]{\footnotesize{\textbf{\textcolor{undying}{Fulfills}}}};
 
-  \draw[-{Kite[scale=2]}, densely dash dot] (sphere.south west) -| (clastic.north)
+  \draw[line width=2.071pt, -{Kite[scale=0.9]}, loosely dash dot dot] (sphere.south west) -| (clastic.north)
     node[near end, right]{\footnotesize{\textbf{\textcolor{undying}{Extends}}}};
 
-  \draw[-{Kite[scale=2]}] (otherClastic.west) -- (clastic.south)
+  \draw[line width=2.071pt, -{Kite[scale=0.9]}] (otherClastic.west) -- (clastic.south)
     node[midway, left]{\footnotesize{\textbf{\textcolor{undying}{Fulfills}}}};
 
-  \draw[-{Kite[scale=2]}] (sphere.north east) -- (domain.south east)
+  \draw[line width=2.071pt, -{Kite[scale=0.9]}] (sphere.north east) -- (domain.south east)
     node[midway, right]{\footnotesize{\textbf{\textcolor{undying}{Fulfills}}}};
 
-  \draw[-{Kite[scale=2]}] (otherClastic.south) -- ++ (-7, 0)
+  \draw[line width=2.071pt, -{Kite[scale=0.9]}] (otherClastic.south) -- ++ (-7, 0)
     node[midway, below, align=center]{\footnotesize{\textsl{\textcolor{undying}{{Relationally maps to another module}}}}};
 
-  \draw[-{Kite[scale=2]}] (otherClastic.south) -- ++ (-7, 0)
+  \draw[line width=2.071pt, -{Kite[scale=0.9]}] (otherClastic.south) -- ++ (-7, 0)
     node[midway, above, align=center]{\scriptsize{\textsl{\textcolor{undying}{{Optional}}}}};
 
-  \draw[-{Kite[scale=2]}] (clastic.west) -- ++ (-6.8, 0)
+  \draw[line width=2.071pt, -{Kite[scale=0.9]}] (clastic.west) -- ++ (-6.8, 0)
     node[midway, below]{\footnotesize{\textsl{\textcolor{undying}{{Relationally maps to another module}}}}};
 
-  \draw[-{Kite[scale=2]}] (clastic.west) -- ++ (-6.8, 0)
+  \draw[line width=2.071pt, -{Kite[scale=0.9]}] (clastic.west) -- ++ (-6.8, 0)
     node[midway, above]{\scriptsize{\textsl{\textcolor{undying}{{Optional}}}}};
 
 \end{tikzpicture}
