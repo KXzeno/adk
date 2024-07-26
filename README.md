@@ -1,5 +1,5 @@
 <h2 align="center"> Architectural Decision Knowledgebase </h2>
-<p align="center"><em>Personal decision record constructor using <a href="https://www.latex-project.org/">LaTeX</a></em></p>
+<p align="center"><em>Personal decision record constructor using <a rel="noreferrer" href="https://www.latex-project.org/">LaTeX</a></em></p>
 
 ---
 
@@ -53,7 +53,7 @@ DKR
 <h4><em>Enclave Modules</em></h4>
 Keep in mind the act of surveying precedes a record undertaking. This module accounts for projects that demand high costs, and the technical debt projections accrued are alleviated by focusing on approaching goals with decision abstractions which are passed to context modules.
 <h4><em>Context Modules</em></h4>
-To avoid the prospects of enclave modules from being volatile, their decision abstractions are extended toward context modules for fulfillment. This capitalizes the benefits of <a href="https://en.wikipedia.org/wiki/Separation_of_concerns">separation of concerns</a> and the <a href="https://en.wikipedia.org/wiki/Single-responsibility_principle">single responsibility principle</a>. Due to potential nested layers of abstractions, context modules may delegate responsibilities toward other non-enclave modules.
+To avoid the prospects of enclave modules from being volatile, their decision abstractions are extended toward context modules for fulfillment. This capitalizes the benefits of <a rel="noreferrer" href="https://en.wikipedia.org/wiki/Separation_of_concerns">separation of concerns</a> and the <a rel="noreferrer" href="https://en.wikipedia.org/wiki/Single-responsibility_principle">single responsibility principle</a>. Due to potential nested layers of abstractions, context modules may delegate responsibilities toward other non-enclave modules.
 <h4><em>Terminal (Clastic) Modules</em></h4>
 By default, every module besides the enclave module are clastic, modules that do not fracture the enterprise's direction if they were to be scrapped. Only when they require to delegate certain contexts do they become context modules. This mirrors the salience of pruning; synaptic pruning, population pruning, horticultural pruning—where these intersect is the ability to preserve the core from its unnaturalized components. 
 
