@@ -1,6 +1,7 @@
 % adkore.sty
 
 \ProvidesPackage{adkore}
+\UseTblrLibrary{booktabs}
 
 \newcommand{\frontmatter}[5]{%
     \noindent
@@ -67,7 +68,12 @@
 \newcommand{\strategy}[4]{%    
 
     \vspace{0.17cm}
-    {\hfill}\normalsize{\textbf{Core Decision}: #1}{\hfill}
+        \begin{tblr}{
+                colspec = {p{0.14\textwidth} >{\raggedright}X},
+                row{1} = {halign = c}
+            }
+        {\normalsize{\textbf{Core Decision:}}} & #1 \\
+    \end{tblr}
 
     \noindent
     \begin{center}
@@ -76,7 +82,7 @@
                 row{1} = {halign = c}
             }
             \hline
-        \raisebox{-0.5ex}{{\hfill}\textbf{Prospects}{\hfill}\vspace{0.1cm}} & \raisebox{-0.5ex}{{\hfill}\textbf{Decision Parameters}{\hfill}\vspace{0.1cm}} & \raisebox{-0.5ex}{{\hfill}\textbf{0TD Concerns}{\hfill}\vspace{0.1cm}} \\
+            \raisebox{-0.5ex}{{\hfill}\textbf{Prospects}{\hfill}\vspace{0.1cm}} & \raisebox{-0.5ex}{{\hfill}\textbf{Decision Parameters}{\hfill}\vspace{0.1cm}} & \raisebox{-0.5ex}{{\hfill}\textbf{0TD Concerns}{\hfill}\vspace{0.1cm}} \\
             \hline
             \begin{minipage}[t]{0.3\textwidth}
                 \vspace*{0.011cm}
@@ -104,9 +110,9 @@
         \begin{tblr}{
                 colspec = {|p{0.37\textwidth}|p{0.53\textwidth}|},
                 row{1} = {halign = c}
-        }
+            }
             \hline
-        \raisebox{-0.5ex}{{\hfill}\textbf{Decision Process}{\hfill}\vspace{0.1cm}} &  \raisebox{-0.5ex}{\vspace{0.01cm}{\hfill}\textbf{Results and Conflicts}{\hfill}\vspace{0.1cm}} \\
+            \raisebox{-0.5ex}{{\hfill}\textbf{Decision Process}{\hfill}\vspace{0.1cm}} &  \raisebox{-0.5ex}{\vspace{0.01cm}{\hfill}\textbf{Results and Conflicts}{\hfill}\vspace{0.1cm}} \\
             \hline
             \begin{minipage}{0.37\textwidth}
                 \vspace*{0.3cm}
