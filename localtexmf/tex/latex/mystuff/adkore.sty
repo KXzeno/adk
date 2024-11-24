@@ -1,100 +1,105 @@
 % adkore.sty
+% TODO: Create an external program that captures date and time and append to frontmatter
+%       fields for description QoL. Avoid making permanent output files, e.g., create a
+%       Java program that updates the markup preceding the LaTeX compiler
 
 \ProvidesPackage{adkore}
 \UseTblrLibrary{booktabs}
 
 \newcommand{\frontmatter}[5]{%
     \noindent
-    \fbox{\parbox{\textwidth}{%
-            \textsc{\textbf{Type}}: #1
-            \hfill
-            \textbf{Title}: #2
-            \hfill 
-            \textbf{Status}: #3
-            % O = Omitted
-            % ON = Ongoing
-            % D = Deprecated
-            % X = Executed
-            % BL = Backlogged
-            \hfill
-            \textbf{RI}: #4
-            % RI = Record Identifier
+    \makebox[\textwidth][c]{%
+        \fbox{\parbox{\textwidth}{%
+                \textsc{\textbf{Type}}: #1
+                \hfill
+                \textbf{Title}: #2
+                \hfill 
+                \textbf{Status}: #3
+                % O = Omitted
+                % ON = Ongoing
+                % D = Deprecated
+                % X = Executed
+                % BL = Backlogged
+                \hfill
+                \textbf{RI}: #4
+                % RI = Record Identifier
 
-            % Current convention:
-            %% General structure logic --> Layer > Sentinel Node > Node 
-            %% - Layer = Depth; direct descendants of the enclave assumes surface, unique by nature
-            %% - Sentinel Node = target's owner, unique by label
-            %% - Node = target, unique by label
+                % Current convention:
+                %% General structure logic --> Layer > Sentinel Node > Node 
+                %% - Layer = Depth; direct descendants of the enclave assumes surface, unique by nature
+                %% - Sentinel Node = target's owner, unique by label
+                %% - Node = target, unique by label
 
-            %% *- Uniqueness
-            %% *-- On creation of contexts, they are defined by layer number, one more than the 
-            %%     count of contiguous contexts, and layer number of inherited context if any
-            %% *-- On creation of terminals, they are defined by designation of 
-            %%     inherited context and one more than the count of contiguous terminals
+                %% *- Uniqueness
+                %% *-- On creation of contexts, they are defined by layer number, one more than the 
+                %%     count of contiguous contexts, and layer number of inherited context if any
+                %% *-- On creation of terminals, they are defined by designation of 
+                %%     inherited context and one more than the count of contiguous terminals
 
-            %% Formats: 
-            %% - E[#]-[#]C[#]-T[#]
-            %% - E[#]-[#]C[#]:[#]
-            %% - E[#]-[#]C[#]
-            %% - [#]C[#]-T[%]
-            %% - [#]C[#]
+                %% Formats: 
+                %% - E[#]-[#]C[#]-T[#]
+                %% - E[#]-[#]C[#]:[#]
+                %% - E[#]-[#]C[#]
+                %% - [#]C[#]-T[%]
+                %% - [#]C[#]
 
-            %%% e.g., 
-            %%% - E1-C3 // Targets third context of enclave one
-            %%% - E1-C1-T3 // Inherits enclave one; targets third terminal of first context
-            %%% - E2-2C4:2-T2 // Inherits enclave two and second context of layer one; 
-            %%%   targets second terminal of fourth context from depth 2 (default 0)
+                %%% e.g., 
+                %%% - E1-C3 // Targets third context of enclave one
+                %%% - E1-C1-T3 // Inherits enclave one; targets third terminal of first context
+                %%% - E2-2C4:2-T2 // Inherits enclave two and second context of layer one; 
+                %%%   targets second terminal of fourth context from depth 2 (default 0)
 
-            %% Uses up to 5, hypothetically byte-capped, numbers which is useful for minimizing storage and data transmission overhead
-            %% 'E2-2C4:2-T2' is synonymous to '1-2-4-2-2', '2,2.4.2,2', and its undelimited transcoded form: '2E2I2C4T2'
-            %%% '2E2I2C4T2' is reduced as with other formats to '2, 2, 4, 2, 2'
-            %%% Data to transmit is structured either in 1, 4, or 5 bytes due to depth consideration
-            
-            %%% JS/TS:
-            %%% - let RI: U8 = new Uint8ClampedArray(5) // RI[0] = 0bE, RI[1] = 0b[Depth], RI[2] = 0b[∫C], RI[3] = 0bC, RI[4] = 0bT
-            %%% - Dynamic instantiation guarantees a range of 1 byte plus overhead to 5 bytes + overhead
+                %% Uses up to 5, hypothetically byte-capped, numbers which is useful for minimizing storage and data transmission overhead
+                %% 'E2-2C4:2-T2' is synonymous to '1-2-4-2-2', '2,2.4.2,2', and its undelimited transcoded form: '2E2I2C4T2'
+                %%% '2E2I2C4T2' is reduced as with other formats to '2, 2, 4, 2, 2'
+                %%% Data to transmit is structured either in 1, 4, or 5 bytes due to depth consideration
 
-            %%% Java: Provides primitive type 'byte,' and includes hex literals 
-            %%% - byte RI_1 = 0x1 // or 0b00000001, byte[] recordIdentifiers = {RI_1, ... RI_4}
-            %%% - Dynamic instantiation guarantees a range of 1 byte overhead to 5 bytes
-            %%%% - 5 bytes + overhead when using an array, but relatively far less than JS
+                %%% JS/TS:
+                %%% - let RI: U8 = new Uint8ClampedArray(5) // RI[0] = 0bE, RI[1] = 0b[Depth], RI[2] = 0b[∫C], RI[3] = 0bC, RI[4] = 0bT
+                %%% - Dynamic instantiation guarantees a range of 1 byte plus overhead to 5 bytes + overhead
 
-            \vspace{0.17cm}
-            \textbf{Context}: #5
-    }}
-    \\
+                %%% Java: Provides primitive type 'byte,' and includes hex literals 
+                %%% - byte RI_1 = 0x1 // or 0b00000001, byte[] recordIdentifiers = {RI_1, ... RI_4}
+                %%% - Dynamic instantiation guarantees a range of 1 byte overhead to 5 bytes
+                %%%% - 5 bytes + overhead when using an array, but relatively far less than JS
+
+                \vspace{0.17cm}
+                \textbf{Context}: #5
+        }}
+        \\
+    }
 }
 
 \newcommand{\strategy}[4]{%    
 
     \vspace{0.17cm}
-        \begin{tblr}{
-                colspec = {p{0.14\textwidth} >{\raggedright}X},
-                row{1} = {halign = c}
-            }
+    \begin{tblr}{
+            colspec = {p{0.14\textwidth} >{\raggedright}X},
+            row{1} = {halign = c}
+        }
         {\normalsize{\textbf{Core Decision:}}} & #1 \\
     \end{tblr}
 
     \noindent
-    \begin{center}
+    \makebox[\textwidth][c]{%
         \begin{tblr}{
-                colspec = {|p{0.3\textwidth}|p{0.3\textwidth}|p{0.3\textwidth}|},
+                colspec = {|c|c|c|},
                 row{1} = {halign = c}
             }
             \hline
             \raisebox{-0.5ex}{{\hfill}\textbf{Prospects}{\hfill}\vspace{0.1cm}} & \raisebox{-0.5ex}{{\hfill}\textbf{Decision Parameters}{\hfill}\vspace{0.1cm}} & \raisebox{-0.5ex}{{\hfill}\textbf{0TD Concerns}{\hfill}\vspace{0.1cm}} \\
             \hline
-            \begin{minipage}[t]{0.3\textwidth}
+            \begin{minipage}[t]{0.32\textwidth}
                 \vspace*{0.011cm}
                 #2
             \end{minipage}
             \vspace{0.1cm} &
-            \begin{minipage}[t]{0.3\textwidth}
+            \begin{minipage}[t]{0.32\textwidth}
                 \vspace*{0.011cm}
                 #3
             \end{minipage}
             \vspace{0.1cm} &
-            \begin{minipage}[t]{0.3\textwidth}
+            \begin{minipage}[t]{0.32\textwidth}
                 \vspace*{0.011cm}
                 #4
             \end{minipage}
@@ -102,7 +107,7 @@
             \\
             \hline
         \end{tblr}
-    \end{center}
+    }
 } 
 
 \newcommand{\deploy}[2]{%
