@@ -6,8 +6,9 @@
 \ProvidesPackage{adkore}
 \UseTblrLibrary{booktabs}
 
-\newcommand{\frontmatter}[5]{%
+\newcommand{\frontmatter}[7]{%
     \noindent
+    {\faArrowAltCircleUp\hspace{0.3mm}} #6 \hfill #7 {\hspace{0.3mm}\faPencilRuler}\\
     \makebox[\textwidth][c]{%
         \fbox{\parbox{\textwidth}{%
                 \textsc{\textbf{Type}}: #1
