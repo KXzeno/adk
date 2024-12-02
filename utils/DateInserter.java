@@ -10,6 +10,11 @@ import java.nio.charset.StandardCharsets;
 // import java.nio.file.StandardOpenOption;
 import java.lang.CharSequence;
 import java.nio.file.Path;
+// import java.util.Calendar;
+import java.util.Date;
+import java.text.DateFormat;
+import java.util.Locale;
+import java.util.TimeZone;
 
 public class DateInserter {
 
@@ -60,7 +65,19 @@ public class DateInserter {
               int prevMatched = this.matched;
               updateMatcher(line);
               if (this.matched >= 5 && this.matched <= 6 && prevMatched != this.matched) {
-                System.out.println(line);
+                Date now = new Date();
+                DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.SHORT, Locale.US);
+                dateFormat.setTimeZone(TimeZone.getTimeZone("America/Los_Angeles"));
+                System.out.println(dateFormat.format(now));
+
+                /** Display Available IDs
+                String[] timezones = TimeZone.getAvailableIDs();
+                for (int i = 0; i < timezones.length; i++) {
+                  System.out.println(timezones[i]);
+                }
+                */
+
+                // System.out.println(line);
               }
               return line;
             } else { return line; }
