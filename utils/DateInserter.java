@@ -13,7 +13,10 @@ import java.lang.CharSequence;
 import java.nio.file.Path;
 
 public class DateInserter {
-  public static void main(String[] args) {
+  DateInserter() {
+  }
+
+  public void modifyDateFields(String[] args) {
     if (args.length > 0) {
       // Otherwise, concatenation runs n^2
       StringBuilder input = new StringBuilder();
@@ -48,5 +51,9 @@ public class DateInserter {
     } else {
       System.out.println("No args");
     }
+  }
+  public static void main(String[] args) {
+    DateInserter augmenter = new DateInserter();
+    augmenter.modifyDateFields(args);
   }
 }
