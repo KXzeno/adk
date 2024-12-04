@@ -24,7 +24,13 @@ public class Enclave {
     return prev + next + '\n';
   }
 
-  private static Path resolvePath(Path path) {
+  private static Path resolvePrototypePath(Path path) {
+    Path binaryPath = resolveBinPath(path);
+    Path assetsPath = Paths.get(binaryPath.toString().replace("\\bin", "\\assets"));
+    return assetsPath.resolve("boilerplate.tex");
+  }
+
+  private static Path resolveBinPath(Path path) {
     /** @remarks
      * For personal use if need to parse System props
      *
@@ -49,6 +55,9 @@ public class Enclave {
   }
 
   private static void generateBP() {
+    Path classPath = new File(System.getProperty("java.class.path")).toPath();
+    System.out.println((resolvePrototypePath(classPath).toString()));
+    /*
     try {
       BufferedReader bpReader = Files.newBufferedReader(new File("assets/boilerplate.tex").toPath());
       CharSequence fileText = bpReader.lines().reduce("", Enclave::reducer);
@@ -56,12 +65,10 @@ public class Enclave {
     } catch (IOException x) {
       System.err.println(x);
     }
+    */
   }
 
   public static void main(String[] args) {
-    System.out.println(PURPLE + "Text" + RESET);
-    Path classPath = new File(System.getProperty("java.class.path")).toPath();
-    System.out.println(resolvePath(classPath));
-    // generateBP();
+    generateBP();
   }
 }
