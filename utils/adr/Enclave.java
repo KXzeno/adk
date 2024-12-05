@@ -81,7 +81,7 @@ public class Enclave {
     try {
       final String PROTOCOL = identifyScheme(classLoader);
       switch (PROTOCOL) {
-        case "jar": targetPath = classLoader.getResource("assets").toString(); break;
+        case "jar": targetPath = classLoader.getResource("assets/boilerplate.tex").toString(); break;
         case "file": targetPath = resolvePrototypePath(Path.of(classPath)).toString(); break;
         default: throw new InvalidProtocolException("Scheme is not of protocol \\'file\\' or \\'jar\\'");
       }
