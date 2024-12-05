@@ -94,11 +94,12 @@ By default, every module besides the enclave module are clastic, modules that do
 - **Insight Report**: Collection/Knowledge experience throughout decision execution
 <!-- #### Environments -->
 
-##### Hitlist, as of 11-15-2024:
+##### Hitlist, as of 12-05-2024:
 - [ ] Add decision matrix as core project record
 - [ ] Create an intuitive flow|node-chart command
 - [ ] Design a UID generator for relational mapping of local enclave modules
 - [ ] Reduce operational overhead for consumers
+  - With ID generators, allow users to conveniently connect non enclave modules on adr builds
 - [ ] Redesign structural logic for better traceability and dynamic frontload
   - Elucidate initial frontload and mid-project adjustments/discoveries
   - Must feel as a living document with clear demarcation of it's lifecycle/timeline
