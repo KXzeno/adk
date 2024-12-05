@@ -33,6 +33,15 @@ public class Enclave {
     return assetsPath.resolve("boilerplate.tex");
   }
 
+  private static URI resolveJARPrototypePath(ClassLoader cl) {
+    try {
+      return cl.getResource("assets/boilerplate.tex").toURI();
+    } catch (URISyntaxException x) {
+      System.err.println(x);
+    }
+    return null;
+  }
+
   private static Path resolveBinPath(Path path) {
     /** @remarks
      * For personal use if need to parse System props
@@ -81,21 +90,21 @@ public class Enclave {
     try {
       final String PROTOCOL = identifyScheme(classLoader);
       switch (PROTOCOL) {
-        case "jar": targetPath = classLoader.getResource("assets/boilerplate.tex").toString(); break;
+        case "jar": targetPath = resolveJARPrototypePath(classLoader).toString(); break;
         case "file": targetPath = resolvePrototypePath(Path.of(classPath)).toString(); break;
         default: throw new InvalidProtocolException("Scheme is not of protocol \\'file\\' or \\'jar\\'");
       }
       URI targetURI = URI.create(targetPath.replaceAll("\\\\", "/"));
       System.out.println(targetURI);
-      /*
-         try {
-         BufferedReader bpReader = Files.newBufferedReader(new File("assets/boilerplate.tex").toPath());
-         CharSequence fileText = bpReader.lines().reduce("", Enclave::reducer);
-      // System.out.println(fileText);
-      } catch (IOException x) {
-      System.err.println(x);
-      }
-      */
+
+      // try {
+      //   BufferedReader bpReader = Files.newBufferedReader(new File(targetURI).toPath());
+      //   CharSequence fileText = bpReader.lines().reduce("", Enclave::reducer);
+      //   bpReader.close();
+      //   BufferedWriter bpWriter = Files.newBufferedWriter(newFile(""))
+      // } catch (IOException x) {
+      //   System.err.println(x);
+      // }
     } catch (InvalidProtocolException x) {
       System.err.println(x);
     }
