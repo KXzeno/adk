@@ -11,6 +11,9 @@ import java.nio.file.Path;
 import java.lang.CharSequence;
 import java.security.CodeSource;
 import java.net.URI;
+import java.net.URISyntaxException;
+
+import utils.exceptions.InvalidProtocolException;
 
 // TODO: 
 
@@ -54,18 +57,48 @@ public class Enclave {
     return new File(splittedPath[0]).toPath();
   }
 
-  private static void generateBP() {
-    Path classPath = new File(System.getProperty("java.class.path")).toPath();
-    System.out.println((resolvePrototypePath(classPath).toString()));
-    /*
+  private static String identifyScheme(ClassLoader cl) {
+    String scheme = null;
     try {
-      BufferedReader bpReader = Files.newBufferedReader(new File("assets/boilerplate.tex").toPath());
-      CharSequence fileText = bpReader.lines().reduce("", Enclave::reducer);
+      scheme = cl.getResource("").toURI().getScheme();
+    } catch (NullPointerException | URISyntaxException x1) {
+      try {
+        scheme = cl.getResource("META-INF").toURI().getScheme();
+      } catch (NullPointerException | URISyntaxException x2) {
+        System.err.println(x1);
+        System.err.println(x2);
+      }
+    }
+    return scheme;
+  }
+
+  private static void generateBP() {
+    // ClassLoader to access resources with respect to jar root, accessible by .class
+    ClassLoader classLoader = ClassLoader.getSystemClassLoader();
+    // ClassPath to navigate user's FileSystem with respect to location of initialized JVM 
+    URI classPath = new File(System.getProperty("java.class.path")).toURI();
+    String targetPath = "";
+    try {
+      final String PROTOCOL = identifyScheme(classLoader);
+      switch (PROTOCOL) {
+        case "jar": targetPath = classLoader.getResource("assets").toString(); break;
+        case "file": targetPath = resolvePrototypePath(Path.of(classPath)).toString(); break;
+        default: throw new InvalidProtocolException("Scheme is not of protocol \\'file\\' or \\'jar\\'");
+      }
+      URI targetURI = URI.create(targetPath.replaceAll("\\\\", "/"));
+      System.out.println(targetURI);
+      /*
+         try {
+         BufferedReader bpReader = Files.newBufferedReader(new File("assets/boilerplate.tex").toPath());
+         CharSequence fileText = bpReader.lines().reduce("", Enclave::reducer);
       // System.out.println(fileText);
-    } catch (IOException x) {
+      } catch (IOException x) {
+      System.err.println(x);
+      }
+      */
+    } catch (InvalidProtocolException x) {
       System.err.println(x);
     }
-    */
   }
 
   public static void main(String[] args) {
