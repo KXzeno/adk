@@ -94,8 +94,8 @@ public class Enclave {
         case "file": targetPath = resolvePrototypePath(Path.of(classPath)).toString(); break;
         default: throw new InvalidProtocolException("Scheme is not of protocol \\'file\\' or \\'jar\\'");
       }
-      URI targetURI = URI.create(targetPath.replaceAll("\\\\", "/"));
-      System.out.println(targetURI);
+      String formattedTargetPath = targetPath.replaceAll("\\\\", "/");
+      URI targetURI = URI.create(formattedTargetPath);
 
       // try {
       //   BufferedReader bpReader = Files.newBufferedReader(new File(targetURI).toPath());
