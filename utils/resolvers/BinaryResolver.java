@@ -10,6 +10,7 @@ public class BinaryResolver implements Resolver {
 
   public BinaryResolver() {}
 
+  @Override
   public Path resolve(Path path) {
     /** @remarks
      * For personal use if need to parse System props

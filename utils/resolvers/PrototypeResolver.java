@@ -9,6 +9,7 @@ public class PrototypeResolver implements Resolver {
 
   public PrototypeResolver () {}
 
+  @Override
   public Path resolve(Path path) {
     this.binaryPath = new BinaryResolver().resolve(path);
     this.assetsPath = Paths.get(binaryPath.toString().replace("\\bin", "\\assets"));
