@@ -1,2 +1,2 @@
-Main-Class: utils.adr.Enclave 
+Main-Class: utils.ADK
 
