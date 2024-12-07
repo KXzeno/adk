@@ -42,7 +42,8 @@ public class PrototypeReader implements ReadablePrototype {
     } 
 
     this.formattedTargetPath = targetPath.replaceAll("\\\\", "/");
-    this.prototype = URI.create(formattedTargetPath);
+    StringBuilder ftpURI = new StringBuilder(PROTOCOL).append(":///");
+    this.prototype = URI.create(formattedTargetPath.replaceAll("([\\S\\s]+)", String.format("%s$1", ftpURI.toString())));
 
     return this.prototype;
   }
