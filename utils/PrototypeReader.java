@@ -42,9 +42,12 @@ public class PrototypeReader implements ReadablePrototype {
     } 
 
     this.formattedTargetPath = targetPath.replaceAll("\\\\", "/");
-    StringBuilder ftpURI = new StringBuilder(PROTOCOL).append(":///");
-    this.prototype = URI.create(formattedTargetPath.replaceAll("([\\S\\s]+)", String.format("%s$1", ftpURI.toString())));
-
+    if (PROTOCOL.equals("jar")) {
+      this.prototype = URI.create(formattedTargetPath);
+    } else {
+      StringBuilder ftpURI = new StringBuilder(PROTOCOL).append(":///");
+      this.prototype = URI.create(formattedTargetPath.replaceAll("([\\S\\s]+)", String.format("%s$1", ftpURI.toString())));
+    }
     return this.prototype;
   }
 
@@ -56,7 +59,13 @@ public class PrototypeReader implements ReadablePrototype {
    */
   public CharSequence parse(URI prototype) throws NullPointerException {
     try {
-      BufferedReader bpReader = Files.newBufferedReader(new File(this.prototype).toPath());
+      BufferedReader bpReader;
+      if (this.formattedTargetPath.matches("^jar\\:[\\S\\s]+") == true) {
+        String fileOfProto = this.prototype.toString().replaceAll("(^jar\\:file\\:/)([\\S\\s]+)((?<=/)[\\S\\s]+jar!/)([\\S\\s]+)", "$2$4");
+        bpReader = Files.newBufferedReader(new File(fileOfProto).toPath());
+      } else {
+        bpReader = Files.newBufferedReader(new File(this.prototype).toPath());
+      }
       CharSequence fileText = bpReader.lines().reduce("", PrototypeReader::reducer);
       bpReader.close();
       return fileText;
