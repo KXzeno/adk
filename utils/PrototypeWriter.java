@@ -74,14 +74,20 @@ public class PrototypeWriter implements WritablePrototype {
   public void setLocation(String loc) {
     // Static approach of resolving to basepath
     URI protoURI = getPrototype();
+    if (protoURI.getScheme().equals("jar")) {
+      try {
+        protoURI = new URI(protoURI.toString().replaceAll("(^jar\\:)([\\S\\s]+)((?<=/)[\\S\\s]+jar!/)([\\S\\s]+)", "$2$4"));
+      } catch (URISyntaxException x) {
+        System.err.println(x);
+      }
+    }
+    System.out.println("STFU: " + protoURI);
     File traverser = new File(protoURI).getParentFile();
+    System.out.println(traverser);
     while (!traverser.getName().equals("assets")) {
       traverser = new File(traverser.getParent());
     }
     URI baseURI = new File(traverser.getParent()).toURI();
-    System.out.println("BASE URI: " + baseURI);
-    System.out.println("STRING: " + loc);
-    System.out.println("RESOLVED: " + baseURI.resolve(loc));
     this.setLocation(baseURI.resolve(loc));
   }
 
