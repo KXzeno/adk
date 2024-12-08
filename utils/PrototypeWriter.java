@@ -17,9 +17,9 @@ public class PrototypeWriter implements WritablePrototype {
   private URI loc;
   private CharSequence content;
   private File prototype;
-  private static final String RESET = "\033[0m"; 
-  private static final String PURPLE = "\033[1;35m"; 
-  private static final String[] FIELDS = { 
+  public static final String RESET = "\033[0m"; 
+  public static final String PURPLE = "\033[1;35m"; 
+  public static final String[] FIELDS = { 
     "type", 
     "title", 
     "status", 
@@ -76,14 +76,13 @@ public class PrototypeWriter implements WritablePrototype {
     URI protoURI = getPrototype();
     if (protoURI.getScheme().equals("jar")) {
       try {
-        protoURI = new URI(protoURI.toString().replaceAll("(^jar\\:)([\\S\\s]+)((?<=/)[\\S\\s]+jar!/)([\\S\\s]+)", "$2$4"));
+        protoURI = new URI(protoURI.toString().replaceAll("(^jar\\:)([\\S\\s]+)((?<=adk/)[\\S\\s]+jar!/)(?:dist/)?([\\S\\s]+)", "$2$4"));
       } catch (URISyntaxException x) {
         System.err.println(x);
       }
     }
-    System.out.println("STFU: " + protoURI);
+    System.out.println("RESULTANT: " + protoURI);
     File traverser = new File(protoURI).getParentFile();
-    System.out.println(traverser);
     while (!traverser.getName().equals("assets")) {
       traverser = new File(traverser.getParent());
     }
