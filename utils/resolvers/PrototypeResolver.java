@@ -22,10 +22,10 @@ public class PrototypeResolver implements Resolver {
    * @return base path
    */
   public Path resolveToBasePath(Path path) {
-    if (this.binaryPath != null) {
+    if (this.binaryPath == null) {
       this.binaryPath = new BinaryResolver().resolve(path);
     }
     this.assetsPath = Paths.get(this.binaryPath.toString().replace("\\bin", "\\"));
-    return this.assetsPath
+    return this.assetsPath;
   }
 }
