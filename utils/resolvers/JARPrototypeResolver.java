@@ -2,7 +2,8 @@ package utils.resolvers;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.nio.file.Path;
+
+import utils.PrototypeWriter;
 
 public class JARPrototypeResolver {
   public JARPrototypeResolver() {}
@@ -27,7 +28,8 @@ public class JARPrototypeResolver {
    */
   public URI resolveToBasePath(ClassLoader cl) {
     try {
-      URI newURI = new URI(protoURI.toString().replaceAll("(^jar\\:)([\\S\\s]+)((?<=adk/)[\\S\\s]+jar!/)(?:dist/)?([\\S\\s]+)", "$2"));
+      URI protoURI = new PrototypeWriter().getPrototype();
+      return new URI(protoURI.toString().replaceAll("(^jar\\:)([\\S\\s]+)((?<=adk/)[\\S\\s]+jar!/)(?:dist/)?([\\S\\s]+)", "$2"));
     } catch (URISyntaxException x) {
       System.err.println(x);
     }
