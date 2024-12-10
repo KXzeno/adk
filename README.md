@@ -103,3 +103,4 @@ By default, every module besides the enclave module are clastic, modules that do
 - [ ] Redesign structural logic for better traceability and dynamic frontload
   - Elucidate initial frontload and mid-project adjustments/discoveries
   - Must feel as a living document with clear demarcation of it's lifecycle/timeline
+- [ ] Document JavaFX installation for those desiring manual entry-point invocation
