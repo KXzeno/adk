@@ -9,3 +9,6 @@ personal-log.txt
 */*.class
 !/bin/*.class
 /_ARK
+
+#dev libraries
+/lib/javafx*
