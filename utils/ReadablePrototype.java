@@ -1,6 +1,7 @@
 package utils;
 
 import java.net.URI;
+import java.nio.file.NoSuchFileException;
 
 import utils.exceptions.InvalidProtocolException;
 
@@ -16,6 +17,8 @@ public interface ReadablePrototype {
   /**
    * Returns a URI targetting the prototype path
    * @return the URI of current prototype path
+   * @throws InvalidProtocolException if not a jar or a file
+   * @throws NoSuchFileException if the prototype path cannot be resolved
    */
-  URI getPrototype() throws InvalidProtocolException;
+  URI getPrototype() throws InvalidProtocolException, NoSuchFileException;
 }
