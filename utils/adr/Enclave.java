@@ -1,6 +1,9 @@
 package utils.adr;
 
 import utils.exceptions.InvalidProtocolException;
+
+import java.nio.file.NoSuchFileException;
+
 import utils.PrototypeReader;
 
 public class Enclave {
@@ -16,8 +19,9 @@ public class Enclave {
         System.out.println(arg);
       }
       System.out.println(PURPLE + protoReader.getPrototype() + RESET);
-    } catch (InvalidProtocolException x) {
-      System.out.println(x);
+    } catch (InvalidProtocolException | NoSuchFileException exc) {
+      exc.printStackTrace();
+      System.out.println(exc + "\nCaller: Enclave::generateBP");
     }
   }
 
