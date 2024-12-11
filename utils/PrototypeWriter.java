@@ -3,6 +3,7 @@ package utils;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -35,7 +36,7 @@ public class PrototypeWriter implements WritablePrototype {
   private int position = -1;
 
   @Override
-  public URI getPrototype() {
+  public URI getPrototype() throws NoSuchFileException {
     try {
       PrototypeReader pr = new PrototypeReader();
       URI prototype = pr.getPrototype();
@@ -47,8 +48,23 @@ public class PrototypeWriter implements WritablePrototype {
         return prototype;
       }
     } catch (InvalidProtocolException exc) {
-      System.err.println(exc);
-    } 
+      exc.printStackTrace();
+      System.err.println(exc + "\nCaller: PrototypeWriter::getPrototype");
+    } catch (NoSuchFileException exc1) {
+      // Perform partial recovery for callers that do not require content
+      try {
+        PrototypeReader pr = new PrototypeReader();
+        URI prototype = pr.getPrototype();
+        if (prototype == null) {
+          throw new InvalidProtocolException("URI Protocol could not be parsed.");
+        } else {
+          return prototype;
+        }
+      } catch (InvalidProtocolException exc2) {
+        exc2.printStackTrace();
+        System.err.println(exc2 + "\nCaller: PrototypeWriter::getPrototype");
+      }
+    }
     return null;
   }
 
@@ -59,7 +75,6 @@ public class PrototypeWriter implements WritablePrototype {
 
   @Override
   public void setLocation(URI loc) {
-    if (loc == null) throw new NullPointerException("Null Location");
     this.loc = loc;
     this.prototype = new File(this.loc);
   }
@@ -73,21 +88,26 @@ public class PrototypeWriter implements WritablePrototype {
    */
   public void setLocation(String loc) {
     // Static approach of resolving to basepath
-    URI protoURI = getPrototype();
-    if (protoURI.getScheme().equals("jar")) {
-      try {
-        protoURI = new URI(protoURI.toString().replaceAll("(^jar\\:)([\\S\\s]+)((?<=adk/)[\\S\\s]+jar!/)(?:dist/)?([\\S\\s]+)", "$2$4"));
-      } catch (URISyntaxException x) {
-        System.err.println(x);
+    try {
+      URI protoURI = getPrototype();
+      if (protoURI.getScheme().equals("jar")) {
+        try {
+          protoURI = new URI(protoURI.toString().replaceAll("(^jar\\:)([\\S\\s]+)((?<=adk/)[\\S\\s]+jar!/)(?:dist/)?([\\S\\s]+)", "$2$4"));
+        } catch (URISyntaxException x) {
+          System.err.println(x);
+        }
       }
+      System.out.println("RESULTANT: " + protoURI);
+      File traverser = new File(protoURI).getParentFile();
+      while (!traverser.getName().equals("assets")) {
+        traverser = new File(traverser.getParent());
+      }
+      URI baseURI = new File(traverser.getParent()).toURI();
+      this.setLocation(baseURI.resolve(loc));
+    } catch (NoSuchFileException exc) {
+      exc.printStackTrace();
+      System.out.println(exc + "\nCaller: setLocation");
     }
-    System.out.println("RESULTANT: " + protoURI);
-    File traverser = new File(protoURI).getParentFile();
-    while (!traverser.getName().equals("assets")) {
-      traverser = new File(traverser.getParent());
-    }
-    URI baseURI = new File(traverser.getParent()).toURI();
-    this.setLocation(baseURI.resolve(loc));
   }
 
   // TODO: Handle closing brace on new line exception
@@ -114,7 +134,7 @@ public class PrototypeWriter implements WritablePrototype {
                 curlStack.push(targetChar);
               } else {
                 Character popped = curlStack.pop();
-                if (popped == null) throw new NullPointerException("Missing field opener.");
+                if (popped == null) return null; // Invalid match
                 if (curlStack.size() == 0) this.position++;
               }
             }
@@ -153,7 +173,7 @@ public class PrototypeWriter implements WritablePrototype {
               curlStack.push(targetChar);
             } else {
               Character popped = curlStack.pop();
-              if (popped == null) throw new NullPointerException("Missing field opener.");
+              if (popped == null) return null; // Invalid match
               if (curlStack.size() == 0) this.position++;
             }
           }
