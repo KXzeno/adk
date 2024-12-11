@@ -1,21 +1,20 @@
 package utils.resolvers;
 
 import java.net.URISyntaxException;
+import java.net.URL;
 
 public class URIParser {
   public static String identifyScheme(ClassLoader cl) {
     String scheme = null;
     try {
-      scheme = cl.getResource("").toURI().getScheme();
-    } catch (URISyntaxException x1) {
-      try {
+      URL currPath = cl.getResource("");
+      if (currPath == null) {
         scheme = cl.getResource("META-INF").toURI().getScheme();
-      } catch (URISyntaxException x2) {
-        System.err.println(x1);
-        x1.printStackTrace();
-        System.err.println(x2);
-        x2.printStackTrace();
+      } else {
+        scheme = currPath.toURI().getScheme();
       }
+    } catch (URISyntaxException exc) {
+      exc.printStackTrace();
     }
     return scheme;
   }
