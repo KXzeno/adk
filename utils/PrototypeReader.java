@@ -3,6 +3,7 @@ package utils;
 import java.net.URI;
 import java.io.BufferedReader;
 import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
 import java.io.File;
 import java.nio.file.Path;
 import java.io.IOException;
@@ -29,7 +30,7 @@ public class PrototypeReader implements ReadablePrototype {
    *
    * @throws InvalidProtocolException if the URI scheme is not jar OR file
    */
-  public URI getPrototype() throws InvalidProtocolException {
+  public URI getPrototype() throws InvalidProtocolException, NoSuchFileException {
     String targetPath = null;
     // ClassPath to navigate user's FileSystem with respect to location of initialized JVM 
     URI classPath = new File(System.getProperty("java.class.path")).toURI();
@@ -57,7 +58,7 @@ public class PrototypeReader implements ReadablePrototype {
    * @param prototype the prototype URI to extract and parse from
    * @return a mutable CharSequence intended for forwarding to an existing or new buffer
    */
-  public CharSequence parse(URI prototype) throws NullPointerException {
+  public CharSequence parse(URI prototype) throws NoSuchFileException {
     try {
       BufferedReader bpReader;
       if (this.formattedTargetPath.matches("^jar\\:[\\S\\s]+") == true) {
@@ -70,9 +71,14 @@ public class PrototypeReader implements ReadablePrototype {
       bpReader.close();
       return fileText;
     } catch (IOException x) {
-      System.err.println(x);
+      if (x instanceof NoSuchFileException) {
+        throw new NoSuchFileException("No file found.");
+      } else {
+        x.printStackTrace();
+        System.err.println(x + "\nCaller: PrototypeReader::parse");
+      }
+      return null;
     }
-    return null;
   }
 
   /**
@@ -81,7 +87,7 @@ public class PrototypeReader implements ReadablePrototype {
    * @throws InvalidProtocolException if the URI scheme is not jar OR file
    * @return a mutable CharSequence intended for forwarding to an existing or new buffer
    */
-  public static CharSequence fetch() throws NullPointerException, InvalidProtocolException {
+  public static CharSequence fetch() throws InvalidProtocolException, NoSuchFileException {
     PrototypeReader pr = new PrototypeReader();
     return pr.parse(pr.getPrototype());
   }
