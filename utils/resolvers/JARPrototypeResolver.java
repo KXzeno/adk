@@ -2,6 +2,7 @@ package utils.resolvers;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.nio.file.NoSuchFileException;
 
 import utils.PrototypeWriter;
 
@@ -30,8 +31,12 @@ public class JARPrototypeResolver {
     try {
       URI protoURI = new PrototypeWriter().getPrototype();
       return new URI(protoURI.toString().replaceAll("(^jar\\:)([\\S\\s]+)((?<=adk/)[\\S\\s]+jar!/)(?:dist/)?([\\S\\s]+)", "$2"));
-    } catch (URISyntaxException x) {
-      System.err.println(x);
+    } catch (URISyntaxException | NoSuchFileException exc) {
+      if (exc instanceof NoSuchFileException) {
+        System.out.println("Unable to detect prototype; rebound is expected to undergo...");
+      } else {
+        System.err.println(exc);
+      }
     }
     return null;
   }
