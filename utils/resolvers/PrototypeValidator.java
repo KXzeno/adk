@@ -1,6 +1,7 @@
 package utils.resolvers;
 
 import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.net.URI;
 import utils.ReadablePrototype;
@@ -20,8 +21,9 @@ public class PrototypeValidator implements Validator<ReadablePrototype> {
     try {
       this.baseURI = prototype.getPrototype();
       return true;
-    } catch (InvalidProtocolException exc) {
-      System.err.println(exc);
+    } catch (InvalidProtocolException | NoSuchFileException exc) {
+      exc.printStackTrace();
+      System.err.println(exc + "\nCaller: validate");
       return false;
     } finally {
       // Validation is a one-off operation, remove from memory for optimization
@@ -32,8 +34,13 @@ public class PrototypeValidator implements Validator<ReadablePrototype> {
   @Override
   public ReadablePrototype rebound() {
     PrototypeWriter prototype = new PrototypeWriter();
-    this.baseURI = prototype.getPrototype();
-    String scheme = baseURI.getScheme();
+    try {
+      this.baseURI = prototype.getPrototype();
+    } catch (NoSuchFileException exc) {
+      exc.printStackTrace();
+      System.err.println(exc + "\nCaller: rebound");
+    }
+    String scheme = this.baseURI.getScheme();
     Path binPath = Path.of(new File(System.getProperty("java.class.path")).toURI());
     String basePath = new PrototypeResolver().resolveToBasePath(binPath).toString();
     URI baseURI = URI.create(basePath.replaceAll("([\\S\\s]+)", String.format("%s$1", "file:\\\\")).replaceAll("\\\\", "/"));
