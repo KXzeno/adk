@@ -62,7 +62,7 @@ public class PrototypeReader implements ReadablePrototype {
     try {
       BufferedReader bpReader;
       if (this.formattedTargetPath.matches("^jar\\:[\\S\\s]+") == true) {
-        String fileOfProto = this.prototype.toString().replaceAll("(^jar:file:/)([\\S\\s]+)((?<=adk/)[\\S\\s]+jar!/)(?:dist/)?([\\S\\s]+)", "$2$4");
+        String fileOfProto = this.prototype.toString().replaceAll("(^jar:file:/)([\\S\\s]*/)((?<!dist/)[\\S\\s]+jar!/)(?:dist/)?([\\S\\s]+)", "$2$4");
         bpReader = Files.newBufferedReader(new File(fileOfProto).toPath());
       } else {
         bpReader = Files.newBufferedReader(new File(this.prototype).toPath());

@@ -92,7 +92,7 @@ public class PrototypeWriter implements WritablePrototype {
       URI protoURI = getPrototype();
       if (protoURI.getScheme().equals("jar")) {
         try {
-          protoURI = new URI(protoURI.toString().replaceAll("(^jar\\:)([\\S\\s]+)((?<=adk/)[\\S\\s]+jar!/)(?:dist/)?([\\S\\s]+)", "$2$4"));
+          protoURI = new URI(protoURI.toString().replaceAll("(^jar\\:)([\\S\\s]*/)((?<!dist/)[\\S\\s]+jar!/)(?:dist/)?([\\S\\s]+)", "$2$4"));
         } catch (URISyntaxException x) {
           System.err.println(x);
         }
@@ -115,6 +115,7 @@ public class PrototypeWriter implements WritablePrototype {
   public String getField(String fieldName) {
     boolean hasField = false;
     for (String field : PrototypeWriter.FIELDS) {
+      // TODO: Handle case sensitivity
       if (field.equals(fieldName)) {
         hasField = true;
       }

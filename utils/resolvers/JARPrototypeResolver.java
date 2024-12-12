@@ -30,7 +30,7 @@ public class JARPrototypeResolver {
   public URI resolveToBasePath(ClassLoader cl) {
     try {
       URI protoURI = new PrototypeWriter().getPrototype();
-      return new URI(protoURI.toString().replaceAll("(^jar\\:)([\\S\\s]+)((?<=adk/)[\\S\\s]+jar!/)(?:dist/)?([\\S\\s]+)", "$2"));
+      return new URI(protoURI.toString().replaceAll("(^jar\\:)([\\S\\s]*/)((?<!dist/)[\\S\\s]+jar!/)(?:dist/)?([\\S\\s]+)", "$2"));
     } catch (URISyntaxException | NoSuchFileException exc) {
       if (exc instanceof NoSuchFileException) {
         System.out.println("Unable to detect prototype; rebound is expected to undergo...");
