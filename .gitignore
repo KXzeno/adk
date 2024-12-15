@@ -10,5 +10,9 @@ personal-log.txt
 !/bin/*.class
 /_ARK
 
-#dev libraries
+#dev
 /lib/javafx*
+/.vim
+
+#dist
+/dist/mintex/**
