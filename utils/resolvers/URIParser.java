@@ -18,4 +18,20 @@ public class URIParser {
     }
     return scheme;
   }
+
+  public static String identifyScheme() {
+    ClassLoader scl = ClassLoader.getSystemClassLoader();
+    String scheme = null;
+    try {
+      URL currPath = scl.getResource("");
+      if (currPath == null) {
+        scheme = scl.getResource("META-INF").toURI().getScheme();
+      } else {
+        scheme = currPath.toURI().getScheme();
+      }
+    } catch (URISyntaxException exc) {
+      exc.printStackTrace();
+    }
+    return scheme;
+  }
 }
