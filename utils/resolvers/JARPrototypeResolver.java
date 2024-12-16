@@ -22,11 +22,26 @@ public class JARPrototypeResolver {
     return null;
   }
 
+  public URI resolveToBasePath() {
+    try {
+      URI protoURI = new PrototypeWriter().getPrototype();
+      return new URI(protoURI.toString().replaceAll("(^jar\\:)([\\S\\s]*/)((?<!dist/)[\\S\\s]+jar!/)(?:dist/)?([\\S\\s]+)", "$2"));
+    } catch (URISyntaxException | NoSuchFileException exc) {
+      if (exc instanceof NoSuchFileException) {
+        System.out.println("Unable to detect prototype; rebound is expected to undergo...");
+      } else {
+        System.err.println(exc);
+      }
+    }
+    return null;
+  }
+
   /**
    * Returns path of the project root of which the prototype resides.
    * @param path the path reference used to resolve to project root
    * @return base URI
    */
+  // TODO: Utilize argument
   public URI resolveToBasePath(ClassLoader cl) {
     try {
       URI protoURI = new PrototypeWriter().getPrototype();
