@@ -2,6 +2,7 @@ package utils.resolvers;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.io.File;
 
 public class PrototypeResolver implements Resolver {
   private Path binaryPath;
@@ -24,6 +25,16 @@ public class PrototypeResolver implements Resolver {
   public Path resolveToBasePath(Path path) {
     if (this.binaryPath == null) {
       this.binaryPath = new BinaryResolver().resolve(path);
+    }
+    this.assetsPath = Paths.get(this.binaryPath.toString().replace("\\bin", "\\"));
+    return this.assetsPath;
+  }
+
+  public Path resolveToBasePath() {
+    Path classPath = Path.of(new File(System.getProperty("java.class.path")).toURI());
+    if (this.binaryPath == null) {
+
+      this.binaryPath = new BinaryResolver().resolve(classPath);
     }
     this.assetsPath = Paths.get(this.binaryPath.toString().replace("\\bin", "\\"));
     return this.assetsPath;
