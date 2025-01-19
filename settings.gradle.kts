@@ -11,4 +11,10 @@ plugins {
 }
 
 rootProject.name = "adk"
-include("app")
+include("docbuilderApp/app")
+
+buildCache {
+    local {
+        directory = File("C:/dev/tmp/cache")
+    }
+}
