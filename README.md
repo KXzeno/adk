@@ -49,7 +49,7 @@ DKR
   <h4 style="margin-bottom:0 margin-top:0">ADRe</h4>
   <p style="margin-bottom:0">Architectural Decision Resources;</p>
 -->
-## Module Hierachy
+## Nomenclature::Modules
 <h4><em>Enclave Modules</em></h4>
 Keep in mind the act of surveying precedes a record undertaking. This module accounts for projects that demand high costs, and the technical debt projections accrued are alleviated by focusing on approaching goals with decision abstractions which are passed to context modules.
 <h4><em>Context Modules</em></h4>
